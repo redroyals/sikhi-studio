@@ -157,12 +157,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir stage
-          cp engine/target/release/apk/Concat.apk "stage/Concat-$VERSION-android-arm64.apk"
+          cp "engine/target/release/apk/Sikhi Studio.apk" "stage/SikhiStudio-$VERSION-android-arm64.apk"
           ls -l stage
 
       - uses: actions/upload-artifact@v7
         with:
-          name: Concat-android-arm64
+          name: SikhiStudio-android-arm64
           path: stage/*
           if-no-files-found: error
 
