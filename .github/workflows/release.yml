@@ -53,7 +53,7 @@ jobs:
           esac
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           # The bundles are named for the version, not the tag: v0.2.1 and
-          # v0.2.1-alpha.22 both produce Concat-0.2.1-* files.
+          # v0.2.1-alpha.22 both produce SikhiStudio-0.2.1-* files.
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
   build:
@@ -115,13 +115,13 @@ jobs:
           cd source
           tag="${{ needs.check.outputs.tag }}"
           previous=$(git describe --tags --abbrev=0 --match 'v*' "$tag^" 2>/dev/null || git rev-list --max-parents=0 HEAD | tail -1)
-          .github/release-notes.sh "$previous" "$tag" "Concat ${tag#v}" > "$RUNNER_TEMP/notes.md"
+          .github/release-notes.sh "$previous" "$tag" "Sikhi Studio ${tag#v}" > "$RUNNER_TEMP/notes.md"
           cat "$RUNNER_TEMP/notes.md"
 
       - uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.check.outputs.tag }}
-          name: Concat ${{ needs.check.outputs.tag }}
+          name: Sikhi Studio ${{ needs.check.outputs.tag }}
           prerelease: ${{ contains(needs.check.outputs.tag, '-') }}
           body_path: ${{ runner.temp }}/notes.md
           fail_on_unmatched_files: true

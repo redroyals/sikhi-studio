@@ -32,23 +32,23 @@
 [Setup]
 ; One id for the life of the product, so an install over an older one is
 ; an upgrade and not a second copy.
-AppId={{7B1E5C3A-3B9E-4F0B-9C6D-2F1D0C0A0C47}
-AppName=Concat
+AppId={{2802213B-3C31-483C-A74B-46EBAB500C23}
+AppName=Sikhi Studio
 AppVersion={#Version}
-AppVerName=Concat {#Version}
-AppPublisher=Concat contributors
-AppPublisherURL=https://github.com/jub0t/Concat
-AppSupportURL=https://github.com/jub0t/Concat/issues
-AppUpdatesURL=https://github.com/jub0t/Concat/releases
-DefaultDirName={autopf}\Concat
-DefaultGroupName=Concat
+AppVerName=Sikhi Studio {#Version}
+AppPublisher=Sikhi Studio contributors
+AppPublisherURL=https://github.com/redroyals/sikhi-studio
+AppSupportURL=https://github.com/redroyals/sikhi-studio/issues
+AppUpdatesURL=https://github.com/redroyals/sikhi-studio/releases
+DefaultDirName={autopf}\Sikhi Studio
+DefaultGroupName=Sikhi Studio
 DisableProgramGroupPage=yes
 LicenseFile=..\..\LICENSE
 OutputDir={#Out}
-OutputBaseFilename=Concat-{#Version}-windows-{#Suffix}-setup
+OutputBaseFilename=SikhiStudio-{#Version}-windows-{#Suffix}-setup
 SetupIconFile=..\icons\concat.ico
 UninstallDisplayIcon={app}\concat.ico
-UninstallDisplayName=Concat
+UninstallDisplayName=Sikhi Studio
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern

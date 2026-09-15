@@ -1,13 +1,13 @@
 name: Build app
 
-# Builds Concat - the Slint window, `engine/crates/concat` - for every
+# Builds Sikhi Studio - the Slint window, `engine/crates/concat` - for every
 # platform and architecture it ships on, each on a runner of that
 # architecture so nothing is cross-compiled, and uploads one artifact per
 # target:
 #
-#   macOS    arm64 (Apple silicon)   x86_64 (Intel)     -> Concat.dmg
-#   Linux    x86_64                  aarch64            -> Concat-*.tar.gz
-#   Windows  x86_64                  aarch64            -> Concat-*.zip
+#   macOS    arm64 (Apple silicon)   x86_64 (Intel)     -> SikhiStudio.dmg
+#   Linux    x86_64                  aarch64            -> SikhiStudio-*.tar.gz
+#   Windows  x86_64                  aarch64            -> SikhiStudio-*.zip
 #
 # Reusable: nightly.yml calls it on every push to main, release.yml on every
 # tag. It is the one place the build environment is described:
@@ -134,7 +134,7 @@ jobs:
         run: |
           version=$(sed -n 's/^version = "\(.*\)"/\1/p' engine/Cargo.toml | head -1)
           echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "Building Concat $version for ${{ matrix.target }}"
+          echo "Building Sikhi Studio $version for ${{ matrix.target }}"
 
       # ── Linux ──────────────────────────────────────────────────────────
       # Slint's Skia renderer links fontconfig and freetype; cpal links
@@ -389,13 +389,13 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           set -euo pipefail
-          app=Concat.app
+          app=SikhiStudio.app
           rm -rf "$app"
           mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources" "$app/Contents/Frameworks"
           cp "engine/target/${{ matrix.target }}/app/concat" "$app/Contents/MacOS/concat"
 
           # The icon set Apple wants: each size and its @2x twin.
-          iconset=Concat.iconset
+          iconset=SikhiStudio.iconset
           rm -rf "$iconset"; mkdir "$iconset"
           icons=assets/icons
           cp "$icons/concat_logo_16.png"  "$iconset/icon_16x16.png"
@@ -407,20 +407,20 @@ jobs:
           cp "$icons/concat_logo_256.png" "$iconset/icon_256x256.png"
           cp "$icons/concat_logo_512.png" "$iconset/icon_256x256@2x.png"
           cp "$icons/concat_logo_512.png" "$iconset/icon_512x512.png"
-          iconutil -c icns "$iconset" -o "$app/Contents/Resources/Concat.icns"
+          iconutil -c icns "$iconset" -o "$app/Contents/Resources/SikhiStudio.icns"
 
           cat > "$app/Contents/Info.plist" <<PLIST
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
-            <key>CFBundleName</key><string>Concat</string>
-            <key>CFBundleDisplayName</key><string>Concat</string>
-            <key>CFBundleIdentifier</key><string>app.concat.editor</string>
+            <key>CFBundleName</key><string>Sikhi Studio</string>
+            <key>CFBundleDisplayName</key><string>Sikhi Studio</string>
+            <key>CFBundleIdentifier</key><string>io.sikhi.studio</string>
             <key>CFBundleVersion</key><string>${VERSION}</string>
             <key>CFBundleShortVersionString</key><string>${VERSION}</string>
             <key>CFBundleExecutable</key><string>concat</string>
-            <key>CFBundleIconFile</key><string>Concat</string>
+            <key>CFBundleIconFile</key><string>SikhiStudio</string>
             <key>CFBundlePackageType</key><string>APPL</string>
             <key>LSMinimumSystemVersion</key><string>${MACOSX_DEPLOYMENT_TARGET}</string>
             <key>NSHighResolutionCapable</key><true/>
@@ -462,8 +462,8 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           set -euo pipefail
-          app=Concat.app
-          dmg="Concat-${VERSION}-macos-${{ matrix.arch }}.dmg"
+          app=SikhiStudio.app
+          dmg="SikhiStudio-${VERSION}-macos-${{ matrix.arch }}.dmg"
           if [ -n "${CERT_P12}" ] && [ -n "${IDENTITY}" ]; then
             keychain=$RUNNER_TEMP/signing.keychain-db
             echo "$CERT_P12" | base64 --decode > "$RUNNER_TEMP/cert.p12"
@@ -485,7 +485,7 @@ jobs:
             codesign --force --deep -s - "$app"
           fi
 
-          hdiutil create -volname Concat -srcfolder "$app" -ov -format UDZO "$dmg"
+          hdiutil create -volname "Sikhi Studio" -srcfolder "$app" -ov -format UDZO "$dmg"
 
           if [ -n "${APPLE_ID}" ] && [ -n "${TEAM_ID}" ] && [ -n "${APP_PASSWORD}" ] && [ -n "${IDENTITY}" ]; then
             codesign --force --timestamp -s "$IDENTITY" "$dmg"
@@ -504,7 +504,7 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           set -euo pipefail
-          name="Concat-${VERSION}-linux-${{ matrix.arch }}"
+          name="SikhiStudio-${VERSION}-linux-${{ matrix.arch }}"
           mkdir -p "stage/$name/lib"
           cp "engine/target/${{ matrix.target }}/app/concat" "stage/$name/concat"
           cp -a ffmpeg-dev/lib/*.so* "stage/$name/lib/"
@@ -513,7 +513,7 @@ jobs:
           cat > "stage/$name/concat.desktop" <<DESKTOP
           [Desktop Entry]
           Type=Application
-          Name=Concat
+          Name=Sikhi Studio
           Comment=Video editor
           Exec=concat
           Icon=concat
@@ -546,7 +546,7 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           $ErrorActionPreference = "Stop"
-          $name = "Concat-$env:VERSION-windows-${{ matrix.arch }}"
+          $name = "SikhiStudio-$env:VERSION-windows-${{ matrix.arch }}"
           New-Item -ItemType Directory -Force "stage\$name" | Out-Null
           Copy-Item "engine\target\${{ matrix.target }}\app\concat.exe" "stage\$name\"
           Copy-Item "$env:FFMPEG_DIR\bin\*.dll" "stage\$name\"
@@ -571,6 +571,6 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          name: Concat-${{ matrix.platform }}-${{ matrix.arch }}
+          name: SikhiStudio-${{ matrix.platform }}-${{ matrix.arch }}
           path: stage/*
           if-no-files-found: error

@@ -1,61 +1,42 @@
-# Concat trademark policy
+# Sikhi Studio trademark policy
 
-The Concat **source code** is free software under AGPL-3.0-or-later. The Concat
-**name and logo** are not part of that grant.
-
-This is deliberate and it is normal: the AGPL, like every GNU licence, conveys
-no trademark rights (see AGPL-3.0 section 7(e)). Mozilla, Docker and the Rust
-project all separate the two the same way. The code is yours to fork; the name
-identifies builds that come from this project, so that a user downloading
-"Concat" knows what they are getting.
+Sikhi Studio's **source code** is free software under AGPL-3.0-or-later (see
+[LICENSE](LICENSE)). The Sikhi Studio **name and logo** are not part of that
+grant, for the same reason Concat's own name and logo aren't part of its
+grant — see [NOTICE.md](NOTICE.md) for this project's relationship to
+upstream Concat.
 
 ## The marks
 
-- The word mark **Concat**, as the name of this video editor.
-- The Concat logo and its variants, in [`assets/`](assets/).
+- The name **Sikhi Studio**, as the name of this video editor.
+- The Sikhi Studio logo and its variants, in [`assets/`](assets/).
 
-Copyright and marks are held by Jareer (GitHub: [@jub0t](https://github.com/jub0t)).
+Copyright and marks are held by the Sikhi Studio maintainers.
 
 ## What you may do without asking
 
-- **Say what your software is.** Nominative use is always fine: "a plugin for
-  Concat", "compatible with Concat", "a fork of Concat", "imports Concat
-  projects". Describe the relationship accurately and you need no permission.
-- **Redistribute official builds** under the name Concat, unmodified.
-- **Package Concat for a distribution** (Nix, Homebrew, AUR, Debian, Flatpak…)
-  from unmodified upstream source, keeping the name — patches confined to
-  packaging, paths and build flags are fine.
-- **Write about Concat.** Reviews, tutorials, videos, screenshots, comparisons,
-  academic work. No permission needed, no approval sought.
-- **Use the logo** to link to or refer to this project.
+- Say what your software is: "a plugin for Sikhi Studio", "a fork of Sikhi
+  Studio", "imports Sikhi Studio projects".
+- Redistribute official builds under the name Sikhi Studio, unmodified.
+- Package Sikhi Studio for a distribution from unmodified upstream source,
+  keeping the name — patches confined to packaging, paths and build flags
+  are fine.
+- Write about Sikhi Studio: reviews, tutorials, videos, screenshots,
+  comparisons.
+- Use the logo to link to or refer to this project.
 
 ## What needs a different name
 
-If you distribute a **modified** Concat, please give it your own name and your
-own icon. Concretely, rename before you ship if you:
-
-- change the editor's behaviour, engine, defaults or bundled models;
-- add or remove features and distribute the result to others;
-- ship builds users could mistake for official ones.
-
-You keep every right the AGPL grants you — fork it, change it, sell it, host
-it. Just call it something else, so bug reports and reputations land in the
-right place. Forks are welcome here; that is the point of the licence.
+If you distribute a modified Sikhi Studio, give it your own name and icon —
+the same courtesy this project extends to Concat, whose name and logo this
+project does not use.
 
 ## What is not allowed
 
-- Presenting a modified build as official Concat.
-- Using **Concat** or a confusingly similar name in your product name, company
-  name, app-store listing, or domain in a way that implies this project
-  endorses or maintains it.
+- Presenting a modified build as official Sikhi Studio.
+- Using **Sikhi Studio** or a confusingly similar name in a way that implies
+  this project endorses or maintains your product.
 - Using the logo as your own product's icon or branding.
-- Registering the Concat mark, or a confusingly similar one, in any
-  jurisdiction.
 
-## Asking
-
-Anything not covered above, or a use you want blessed explicitly:
-**jub0trd@gmail.com**. Reasonable requests get a yes.
-
-*This policy may be updated. Changes are not retroactive against uses that were
-permitted when made.*
+This policy may be updated. Changes are not retroactive against uses that
+were permitted when made.

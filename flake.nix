@@ -150,7 +150,7 @@
               name = "concat";
               exec = "concat";
               icon = "concat";
-              desktopName = "Concat";
+              desktopName = "Sikhi Studio";
               comment = "Free and open source video editor";
               categories = [
                 "AudioVideo"
@@ -166,7 +166,7 @@
 
           meta = {
             description = "Free and open source video editor";
-            homepage = "https://github.com/jub0t/Concat";
+            homepage = "https://github.com/redroyals/sikhi-studio";
             license = pkgs.lib.licenses.agpl3Plus;
             platforms = systems;
             mainProgram = "concat";
